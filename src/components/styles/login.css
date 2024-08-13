@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.heading{
+    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+
+  font-size: 5rem;
+  display: inline;
+
+  color: white;
+}
+
+.form-div img{
+    height: 100px;
+    width: 100px;
+}
+
+.form-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+  }
+
+

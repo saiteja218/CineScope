@@ -1,0 +1,13 @@
+.css-1i9wt8r-MuiCardContent-root:last-child {
+    padding-bottom: 5px !important;
+}
+
+
+.scroll-bar{
+    overflow-x: auto;
+    
+}
+
+.scroll-bar::-webkit-scrollbar{
+    width: 0;
+}
