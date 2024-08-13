@@ -2,12 +2,35 @@
     padding-bottom: 5px !important;
 }
 
-
-.scroll-bar{
+.scroll-bar {
     overflow-x: auto;
-    
+    white-space: nowrap; /* Keeps items in a single line */
 }
 
-.scroll-bar::-webkit-scrollbar{
-    width: 0;
+.scroll-bar::-webkit-scrollbar {
+    height: 12px; /* Increase the height of the scrollbar for easier use */
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color:#cd232c ;
+    border-radius: 10px; /* Roundness of the scrollbar thumb */
+    height: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    background: #cd232c 
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Light semi-transparent track */
+    border-radius: 10px; /* Roundness of the track */
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    border: 3px solid transparent; /* Adds padding around thumb for better grip */
+    background-clip: padding-box; /* Ensures background gradient is within border */
+}
+
+.scroll-bar::-webkit-scrollbar-track-piece {
+    margin: 2px; /* Adds padding around the scrollbar */
 }

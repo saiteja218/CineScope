@@ -87,7 +87,7 @@ function Main() {
             <Home/>
             <div style={{ backgroundColor: "" ,margin:"1.2rem"}}>
                 <h3>Now Playing</h3>
-                <div style={{ display: "flex" }}  className='scroll-bar'>
+                <div style={{ display: "flex" ,gap:"0.5rem"}}  className='scroll-bar'>
                     {
 
                         playing.map((movie, index) => {

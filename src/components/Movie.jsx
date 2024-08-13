@@ -262,9 +262,13 @@ function Movie() {
               allReviews.length ? (
                 allReviews.map((review, index) => (
                   <div key={index} style={{ marginBottom: "10px",borderBottom: (index===(allReviews.length-1))?"none":"3px solid grey",paddingBottom:"6px" }}>
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                      {review.name}
-                    </Typography>
+                   <Typography variant="h6" display="block" gutterBottom onClick={()=>{navigate("/review",{state:review.userId})}} sx={{cursor:"pointer"}}>
+                       
+                       <div style={{display:"flex",alignItems:'center'}}>
+                       <AccountCircleIcon fontSize='small' sx={{margin:"4px"}}/>
+                       {review.name}
+                       </div>
+                       </Typography>
                     <Typography variant="body2" sx={{ marginBottom: "8px" }}>
                       {review.userReview}
                     </Typography>

@@ -195,20 +195,21 @@ if (reviewDocSnapshot.exists()) {
                   </div>
                   {edit && (
                         <div className="review" style={{
-                          width: "100%",
-                          height: "100%",
+                          
                           position: 'fixed',
                           top: '0',
                           left: '0',
+                          right: 0,
+                          bottom: 0,
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          zIndex: 10,
-                          backgroundColor: 'rgba(0, 0, 0, 0.8)'
+                          zIndex: 1050,
+                          backgroundColor: 'rgba(0, 0, 0, 0.2)'
 
 
                         }}>
-                          <Card sx={{ width: "50%", height: "50%", opacity: "1", display: "flex", alignItems: "center" }}>
+                          <Card sx={{height:"50%", display: "flex", alignItems: "center" }}>
                             <CardContent>
                               <TextField
                                 id="outlined-multiline-static"
