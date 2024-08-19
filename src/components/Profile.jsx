@@ -39,7 +39,7 @@ export default function Profile({auth}) {
       setName(data.Username)
     }
     getName()
-  }, [reviews])
+  }, [reviews,auth.currentUser])
   useEffect(() => {
     async function getReviews() {
       const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
@@ -50,7 +50,7 @@ export default function Profile({auth}) {
       setReviews(userData)
     }
     getReviews();
-  }, [])
+  }, [auth.currentUser])
 
 
   function editReview(re) {

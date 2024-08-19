@@ -66,7 +66,7 @@ function Movie() {
       const MovieDoc = await getDoc(doc(db, "movies", movie.id.toString()));
       const objOfObj = MovieDoc.data();
       const reviewArray = objOfObj ? Object.values(objOfObj) : "";
-      console.log(reviewArray);
+      // console.log(reviewArray);
       setAllReviews(reviewArray);
     }
     getNameAndReviews();
