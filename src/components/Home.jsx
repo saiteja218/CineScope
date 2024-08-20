@@ -34,7 +34,7 @@ function Home() {
               <div style={{ display: "inline", marginLeft: "2rem" }}>
                 <Button style={getButtonColor("/home")} onClick={() => navigate("/home")}>Home</Button>
                 <Button style={getButtonColor("/myreviews")} onClick={() => navigate("/myreviews")}>Reviews</Button>
-                <Button style={getButtonColor("/profile")} onClick={() => navigate("/profile")}>Profile</Button>
+                <Button style={getButtonColor("/profile")} onClick={() => navigate("/profile")}>MY Reviews</Button>
               </div>
             </Typography>
 

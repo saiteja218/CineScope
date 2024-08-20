@@ -18,11 +18,25 @@ export default function Review() {
   
   const [reviews, setReviews] = useState([]);
   const [name, setName] = useState();
-  const navigate=useNavigate(); 
+  const navigate=useNavigate();
+  const [uid,setUid]=useState();
+
+  useEffect(()=>{
+    async function getuid(){
+        const user=await auth.currentUser;
+        if(user){
+          setUid(user.uid);
+        }else{
+          setTimeout(getuid,10)
+        }
+      }
+      getuid();
+    },[])
+
   
   useEffect(() => {
     async function getName() {
-      const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+      const userDoc = await getDoc(doc(db, "users", uid));
       const data = userDoc.data();
       setName(data.Username)
     }

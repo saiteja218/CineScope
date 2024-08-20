@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { auth } from '../firebase'
+
 import { doc, getDoc, getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import Home from './Home'
@@ -21,9 +21,9 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button'; 
 import { updateDoc,setDoc,deleteDoc,deleteField } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase'
 
-
-export default function Profile({auth}) {
+export default function Profile() {
   const [reviews, setReviews] = useState([]);
   const [name, setName] = useState();
   const [edit,setEdit]=useState(false)
@@ -31,18 +31,34 @@ export default function Profile({auth}) {
   const [rating,setRating]=useState('')
   const [changeMovieReview,setchangeReview]=useState()
   const navigate=useNavigate();
+  const [uid,setUid]=useState();
+
+  useEffect(()=>{
+    async function getuid(){
+        const user=await auth.currentUser;
+        if(user){
+          setUid(user.uid);
+        }else{
+          setTimeout(getuid,10)
+        }
+      }
+      getuid();
+    },[])
 
   useEffect(() => {
+    if(uid){
     async function getName() {
-      const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+      const userDoc = await getDoc(doc(db, "users", uid));
       const data = userDoc.data();
       setName(data.Username)
     }
     getName()
-  }, [reviews,auth.currentUser])
+  }
+  }, [uid])
   useEffect(() => {
+    if(uid){
     async function getReviews() {
-      const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+      const userDoc = await getDoc(doc(db, "users", uid));
       const objs = userDoc.data();
       const userData = Object.values(objs)
       userData.pop();
@@ -50,7 +66,8 @@ export default function Profile({auth}) {
       setReviews(userData)
     }
     getReviews();
-  }, [auth.currentUser])
+  }
+  }, [uid])
 
 
   function editReview(re) {
@@ -74,11 +91,11 @@ async function handleSubmitReview(){
   // console.log(reviews)
 
   
-    const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+    const userDoc = await getDoc(doc(db, "users", uid));
     const existingData = userDoc.data();
     const myName = existingData.Username;
     const newReview = {
-      userId: auth.currentUser.uid,
+      userId: uid,
       name: myName,
       id: changeMovieReview.id,
       genre_ids: changeMovieReview.genre_ids,
@@ -87,7 +104,7 @@ async function handleSubmitReview(){
       userReview: review,
       userRating: rating
     };
-    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+    await updateDoc(doc(db, "users", uid), {
       [newReview.id]:newReview
 
     }).then((response) => {
@@ -135,7 +152,7 @@ if (reviewDocSnapshot.exists()) {
   });
 
 
-  const userRef = await (doc(db, "users", auth.currentUser.uid));
+  const userRef = await (doc(db, "users", uid));
   await updateDoc(userRef, {
         [rev.id]: deleteField()
     }).then((response) => {

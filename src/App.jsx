@@ -42,7 +42,7 @@ function App() {
         
         <Route path='/movie/:id' element={<Movie/>} />
         <Route path='/myreviews' element={<Review auth={auth}/>} />
-        <Route path='/profile' element={<Profile auth={auth}/>} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/review' element={<UserReview/>} />
       </Routes>
 
